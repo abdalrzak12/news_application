@@ -21,7 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsetsDirectional.only(
+            start: 24,
+            end: 24,
+            top: 24,
+          ),
           child:
               _currentIndex == 0
                   ? BodyHomeComponent()

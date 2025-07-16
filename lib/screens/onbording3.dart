@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:news_application1/components/elevatedbutton.dart';
 import 'package:news_application1/components/image_on1.dart';
 import 'package:news_application1/components/logo_onbording.dart';
@@ -7,8 +8,8 @@ import 'package:news_application1/components/text2on.dart';
 import 'package:news_application1/screens/home_screen.dart';
 
 class Onbording3 extends StatelessWidget {
-  const Onbording3({super.key});
-
+  Onbording3({super.key});
+  final storage = GetStorage();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +60,10 @@ class Onbording3 extends StatelessWidget {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomeScreen(),
+                                    builder: (context) {
+                                      storage.write('isLoggedIn', true);
+                                      return HomeScreen();
+                                    },
                                   ),
                                 );
                               },

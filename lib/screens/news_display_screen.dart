@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_application1/providers/tap_bar_provider.dart';
 import 'package:news_application1/theme/app_colors.dart';
 import 'package:news_application1/theme/app_text_style.dart';
+import 'package:provider/provider.dart';
 
 class NewsDisplayScreen extends StatelessWidget {
-  const NewsDisplayScreen({super.key, required this.category, required this.content, required this.title, required this.time, required this.urlImage, required this.site});
+  const NewsDisplayScreen({
+    super.key,
+    required this.category,
+    required this.content,
+    required this.title,
+    this.time,
+    required this.urlImage,
+    required this.site,
+  });
   final String category;
   final String content;
   final String title;
-  final String time;
+  final DateTime? time;
   final String urlImage;
   final String site;
   @override
@@ -28,12 +38,34 @@ class NewsDisplayScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    IconButton(
-                      style: IconButton.styleFrom(
-                        backgroundColor: AppColors.iconButtonColor,
-                      ),
-                      onPressed: () {},
-                      icon: SvgPicture.asset("assets/svg/archive-add.svg"),
+                    Consumer<TapBarProvider>(
+                      builder: (context, prov, child) {
+                        return IconButton(
+                          style: IconButton.styleFrom(
+                            backgroundColor: AppColors.iconButtonColor,
+                          ),
+                          onPressed: () {
+                            bool x = prov.toggleSaved(
+                              title,
+                              content,
+                              urlImage,
+                              category,
+                              site,
+                              time,
+                            );
+                            prov.isactev = x;
+                            print(x);
+                          },
+                          icon:
+                              prov.isactev
+                                  ? SvgPicture.asset(
+                                    "assets/svg/archive-add-on.svg",
+                                  )
+                                  : SvgPicture.asset(
+                                    "assets/svg/archive-add.svg",
+                                  ),
+                        );
+                      },
                     ),
                     SizedBox(width: 12),
                     IconButton(
@@ -52,7 +84,7 @@ class NewsDisplayScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: SvgPicture.asset("assets/svg/arrow-left.svg"),
+                  icon: Icon(Icons.arrow_forward),
                 ),
               ],
             ),

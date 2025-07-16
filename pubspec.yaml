@@ -44,6 +44,7 @@ dependencies:
   provider: ^6.1.5
   flutter_launcher_icons: ^0.14.4
   cloud_firestore: ^5.6.11
+  shimmer: ^3.0.0
       
 flutter_icons:
   android: true

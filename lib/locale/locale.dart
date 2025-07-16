@@ -27,6 +27,8 @@ class MyLocale implements Translations {
       "english": "الانكليزية",
       "syria": "سوريا",
       "america": "أمريكا",
+      "add": "اضافة",
+      "important": "مهم",
     },
     "en": {
       "home": "Home",
@@ -52,6 +54,8 @@ class MyLocale implements Translations {
       "english": "English",
       "syria": "Syria",
       "america": "America",
+      "add": "add",
+      "important": "important",
     },
   };
 }

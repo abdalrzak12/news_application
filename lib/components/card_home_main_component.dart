@@ -15,7 +15,7 @@ class CardHomeMainComponent extends StatelessWidget {
   final String title;
   final String category;
   final String urlImage;
-  final String time;
+  final DateTime? time;
   @override
   Widget build(BuildContext context) {
     return Column(

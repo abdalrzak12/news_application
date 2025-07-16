@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_application1/components/card_notices.dart';
+import 'package:news_application1/components/shimmer_components.dart';
 import 'package:news_application1/models/notice_model.dart';
 
 class Notices extends StatelessWidget {
@@ -64,7 +65,7 @@ class Notices extends StatelessWidget {
               stream: NoticeModel.streamAll(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
+                  return ShimmerPlaceholder();
                 } else {
                   return Expanded(
                     child: ListView.builder(

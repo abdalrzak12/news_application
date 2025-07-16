@@ -9,6 +9,7 @@ import 'package:news_application1/providers/button_home_provider.dart';
 import 'package:news_application1/providers/latest_news_provider.dart';
 import 'package:news_application1/providers/notice_provider.dart';
 import 'package:news_application1/providers/switch_provider.dart';
+import 'package:news_application1/providers/tap_bar_provider.dart';
 import 'package:news_application1/screens/splash.dart';
 import 'package:news_application1/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -33,9 +34,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => NoticeProvider()),
         ChangeNotifierProvider(create: (context) => SwitchProvider()),
         ChangeNotifierProvider(create: (context) => LatestNewsProvider()),
+        ChangeNotifierProvider(create: (context) => TapBarProvider()),
       ],
       child: GetMaterialApp(
-        theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
+        title: 'news Application',
+        theme: ThemeData(
+          fontFamily: "Arabic",
+          scaffoldBackgroundColor: AppColors.backgroundColor,
+        ),
         debugShowCheckedModeBanner: false,
         locale: localeController.initialLang,
         translations: MyLocale(),

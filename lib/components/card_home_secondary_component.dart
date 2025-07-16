@@ -4,8 +4,17 @@ import 'package:news_application1/theme/app_colors.dart';
 import 'package:news_application1/theme/app_text_style.dart';
 
 class CardHomeSecondaryComponent extends StatelessWidget {
-  const CardHomeSecondaryComponent({super.key});
-
+  const CardHomeSecondaryComponent({
+    super.key,
+    required this.title,
+    required this.site,
+    required this.url,
+    required this.time,
+  });
+  final String title;
+  final String site;
+  final String url;
+  final DateTime? time;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +33,7 @@ class CardHomeSecondaryComponent extends StatelessWidget {
                 Positioned.fill(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      "assets/images/ahmad.png",
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.asset("${url}", fit: BoxFit.cover),
                   ),
                 ),
                 Positioned.directional(
@@ -57,7 +63,7 @@ class CardHomeSecondaryComponent extends StatelessWidget {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          "قصر الشعب",
+                          "${site}",
                           style: AppTextStyle.custom(
                             fontSize: 10,
                             fontFamily: 'Arabic',
@@ -73,7 +79,7 @@ class CardHomeSecondaryComponent extends StatelessWidget {
             ),
           ),
           Text(
-            "وزير الخارجية يقود مرحلة الانفتاح الدبلوماسي",
+            "${title}",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyle.custom(

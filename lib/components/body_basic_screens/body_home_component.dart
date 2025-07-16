@@ -68,22 +68,25 @@ class BodyHomeComponent extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 26),
-                Consumer<ButtonHomeProvider>(
+                Consumer2<ButtonHomeProvider, LatestNewsProvider>(
                   builder:
-                      (context, prov, child) => SizedBox(
+                      (context, provbtn, prov1, child) => SizedBox(
                         height: 35,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: prov.titles.length,
+                          itemCount: provbtn.titles.length,
                           itemBuilder: (context, index) {
-                            final x = prov.selectedIndex;
+                            final x = provbtn.selectedIndex;
                             return Row(
                               children: [
                                 ButtonHomeComponent(
-                                  title: prov.titles[index],
+                                  title: provbtn.titles[index].tr,
                                   specific: x == index,
                                   onTap: () {
-                                    prov.select(index);
+                                    provbtn.select(index);
+                                    prov1.fetchNewsByCategory(
+                                      provbtn.titles[index],
+                                    );
                                   },
                                 ),
                                 SizedBox(width: 16),
@@ -95,34 +98,24 @@ class BodyHomeComponent extends StatelessWidget {
                 ),
 
                 SizedBox(height: 24),
-                Container(
-                  height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return CardHomeSecondaryComponent();
-                    },
-                  ),
+                Consumer<LatestNewsProvider>(
+                  builder:
+                      (context, prov, child) => Container(
+                        height: 200,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: prov.filteredNews.length,
+                          itemBuilder: (context, index) {
+                            return CardHomeSecondaryComponent(
+                              title: prov.filteredNews[index].title,
+                              site: prov.filteredNews[index].site,
+                              url: prov.filteredNews[index].url,
+                              time: prov.filteredNews[index].time,
+                            );
+                          },
+                        ),
+                      ),
                 ),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
-                Text("data"),
               ],
             ),
           ),

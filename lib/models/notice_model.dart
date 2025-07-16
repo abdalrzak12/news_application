@@ -14,6 +14,14 @@ class NoticeModel {
       type: map['important'] ?? false,
     );
   }
+
+  Map<String, dynamic> toMap() {
+  return {
+    'titleMain': title,
+    'NoticeContent': content,
+    'important': type,
+  };
+}
   static Stream<List<NoticeModel>> streamAll() {
     return FirebaseFirestore.instance
         .collection("Notifications")
