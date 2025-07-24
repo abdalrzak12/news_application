@@ -10,6 +10,7 @@ import 'package:news_application1/providers/latest_news_provider.dart';
 import 'package:news_application1/providers/notice_provider.dart';
 import 'package:news_application1/providers/switch_provider.dart';
 import 'package:news_application1/providers/tap_bar_provider.dart';
+import 'package:news_application1/providers/video_provider.dart';
 import 'package:news_application1/screens/splash.dart';
 import 'package:news_application1/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SwitchProvider()),
         ChangeNotifierProvider(create: (context) => LatestNewsProvider()),
         ChangeNotifierProvider(create: (context) => TapBarProvider()),
+        ChangeNotifierProvider(create: (context) => VideoProvider()),
       ],
       child: GetMaterialApp(
         title: 'news Application',

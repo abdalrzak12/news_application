@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:news_application1/components/card_saved.dart';
 import 'package:news_application1/providers/tap_bar_provider.dart';
 import 'package:news_application1/screens/news_display_screen.dart';
